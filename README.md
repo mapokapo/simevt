@@ -27,7 +27,7 @@ bunx jsr add @mapokapo/simevt
 ```ts
 import EventEmitter from "@mapokapo/simevt";
 // or in Deno
-import EventEmitter from "jsr:@mapokapo/simevt@^0.1.2";
+import EventEmitter from "jsr:@mapokapo/simevt@^0.1.3";
 
 const myEmitter = new EventEmitter<string>();
 
