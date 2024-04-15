@@ -10,7 +10,7 @@ export default class EventEmitter<T> {
   /**
    * A map of event names to a set of listeners.
    */
-  private listeners: Map<string, Set<Listener<T>>> = new Map();
+  private listeners: Map<string, Listener<T>[]> = new Map();
 
   /**
    * Emit an event with some data.
@@ -34,7 +34,7 @@ export default class EventEmitter<T> {
   public off(event: string, listener: Listener<T>) {
     const listeners = this.listeners.get(event);
     if (listeners) {
-      listeners.delete(listener);
+      listeners.splice(listeners.indexOf(listener), 1);
     }
   }
 
@@ -52,8 +52,8 @@ export default class EventEmitter<T> {
    * @param listener The listener to add.
    */
   public on(event: string, listener: Listener<T>) {
-    const listeners = this.listeners.get(event) || new Set();
-    listeners.add(listener);
+    const listeners = this.listeners.get(event) ?? [];
+    listeners.push(listener);
 
     this.listeners.set(event, listeners);
   }

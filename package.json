@@ -2,7 +2,7 @@
   "name": "simevt",
   "description": "SimEvt - Simple Event Emitter.",
   "author": "mapokapo<leopetrovic11@gmail.com>",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "module": "mod.ts",
   "files": [
