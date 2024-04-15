@@ -1,0 +1,27 @@
+{
+  "name": "simevt",
+  "description": "SimEvt - Simple Event Emitter.",
+  "author": "mapokapo<leopetrovic11@gmail.com>",
+  "version": "0.1.0",
+  "license": "MIT",
+  "module": "mod.ts",
+  "files": [
+    "mod.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@typescript-eslint/eslint-plugin": "^7.6.0",
+    "@typescript-eslint/parser": "^7.6.0",
+    "eslint": "^9.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-perfectionist": "^2.9.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.5"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
