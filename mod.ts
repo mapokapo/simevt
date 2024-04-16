@@ -11,6 +11,7 @@ export default class EventEmitter<T> {
    * A map of event names to a set of listeners.
    */
   private listeners: Map<string, Listener<T>[]> = new Map();
+  private allListeners: Listener<T>[] = [];
 
   /**
    * Emit an event with some data.
@@ -19,10 +20,15 @@ export default class EventEmitter<T> {
    */
   public emit(event: string, data: T) {
     const listeners = this.listeners.get(event);
+
     if (listeners) {
       for (const listener of listeners) {
         listener(data);
       }
+    }
+
+    for (const listener of this.allListeners) {
+      listener(data);
     }
   }
 
@@ -33,6 +39,7 @@ export default class EventEmitter<T> {
    */
   public off(event: string, listener: Listener<T>) {
     const listeners = this.listeners.get(event);
+
     if (listeners) {
       listeners.splice(listeners.indexOf(listener), 1);
     }
@@ -70,5 +77,20 @@ export default class EventEmitter<T> {
     };
 
     this.on(event, onceListener);
+  }
+
+  /**
+   * Add a listener that will be called for all events. Note that this listener will be called after the event-specific listeners.
+   * @param listener The listener to add.
+   */
+  public onAll(listener: Listener<T>) {
+    this.allListeners.push(listener);
+  }
+
+  /**
+   * Remove all listeners that were added with `onAll`.
+   */
+  public offAllListeners() {
+    this.allListeners = [];
   }
 }
